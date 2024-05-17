@@ -56,7 +56,6 @@ public class Inventory extends JPanel {
         try {
             startButtonImage = ImageIO.read(new File("image/tombolStart.png"));
             for (int i = 0; i < imageFiles.length; i++) {
-                System.out.println("Loading: " + imageFiles[i]);
                 images[i] = ImageIO.read(new File(imageFiles[i]));
             }
         } catch (IOException e) {
@@ -74,12 +73,22 @@ public class Inventory extends JPanel {
         }
     }
 
-    private void addToSelectedPlants(String plantName) {
-        selectedPlants.add(plantName);
+    private String getPlantName(String filePath) {
+        // Mendapatkan nama file tanpa ekstensi dan path
+        String fileName = new File(filePath).getName();
+        int dotIndex = fileName.lastIndexOf('.');
+        if (dotIndex != -1) {
+            fileName = fileName.substring(0, dotIndex);
+        }
+        return fileName;
     }
 
-    private void removeFromSelectedPlants(String plantName) {
-        selectedPlants.remove(plantName);
+    private void addToSelectedPlants(String filePath) {
+        selectedPlants.add(getPlantName(filePath));
+    }
+
+    private void removeFromSelectedPlants(String filePath) {
+        selectedPlants.remove(getPlantName(filePath));
     }
 
     private void displaySelectedPlants() {
@@ -98,13 +107,13 @@ public class Inventory extends JPanel {
                 if (deck.contains(i)) {
                     deck.remove(Integer.valueOf(i));
                     removeFromSelectedPlants(plantName);
-                    System.out.println(plantName + " removed from deck");
-                    JOptionPane.showMessageDialog(this, plantName + " removed from deck");
+                    System.out.println(getPlantName(plantName) + " removed from deck");
+                    JOptionPane.showMessageDialog(this, getPlantName(plantName) + " removed from deck");
                 } else if (deck.size() < 6) {
                     deck.add(i);
                     addToSelectedPlants(plantName);
-                    System.out.println(plantName + " added to deck");
-                    JOptionPane.showMessageDialog(this, plantName + " added to deck");
+                    System.out.println(getPlantName(plantName) + " added to deck");
+                    JOptionPane.showMessageDialog(this, getPlantName(plantName) + " added to deck");
                 } else {
                     JOptionPane.showMessageDialog(this, "Deck is full. Cannot add more than 6 items.");
                 }
