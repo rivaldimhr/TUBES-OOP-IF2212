@@ -18,13 +18,13 @@ import javax.swing.JPanel;
 public class Inventory extends JPanel {
     private BufferedImage[] images = new BufferedImage[10];
     private String[] imageFiles = {
-            "peashooter.png",
-            "kentang_gede.png",
-            "mushroom.png",
-            "squash.png",
-            "lilipad.png",
-            "double_peashooter.png",
-            "tangle_kelp.png"
+            "image/peashooter.png",
+            "image/kentang_gede.png",
+            "image/mushroom.png",
+            "image/squash.png",
+            "image/lilipad.png",
+            "image/double_peashooter.png",
+            "image/tangle_kelp.png"
     };
     private int[] imagePositions = new int[10];
     private ArrayList<Integer> deck = new ArrayList<>();
@@ -42,7 +42,7 @@ public class Inventory extends JPanel {
                 int x = e.getX();
                 int y = e.getY();
                 handleClick(e.getX(), e.getY());
-                if (x >= 510 && x <= 590 && y >= 10 && y <= 40) {
+                if (x >= 550 && x <= 650 && y >= 10 && y <= 40) {
                     buttonClicked();
                 }
             }
@@ -54,12 +54,14 @@ public class Inventory extends JPanel {
 
     private void loadImages() {
         try {
-            startButtonImage = ImageIO.read(new File("C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\tombolStart.png"));
+            startButtonImage = ImageIO.read(new File("image/tombolStart.png"));
             for (int i = 0; i < imageFiles.length; i++) {
+                System.out.println("Loading: " + imageFiles[i]);
                 images[i] = ImageIO.read(new File(imageFiles[i]));
             }
         } catch (IOException e) {
             e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error loading images: " + e.getMessage());
         }
     }
 
