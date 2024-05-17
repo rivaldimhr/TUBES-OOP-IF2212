@@ -24,7 +24,10 @@ public class Inventory extends JPanel {
             "image/squash.png",
             "image/lilipad.png",
             "image/double_peashooter.png",
-            "image/tangle_kelp.png"
+            "image/tangle_kelp.png",
+            "image/peashooter_ice.png",
+            "image/kentang.png",
+            "image/sunflower.png"
     };
     private int[] imagePositions = new int[10];
     private ArrayList<Integer> deck = new ArrayList<>();
@@ -33,7 +36,6 @@ public class Inventory extends JPanel {
 
     public Inventory() {
         this.setPreferredSize(new Dimension(60 * 11, 60 * 8));
-        this.setBackground(Color.GRAY);
         this.setDoubleBuffered(true);
         this.setBackground(Color.white);
         this.addMouseListener(new MouseAdapter() {
