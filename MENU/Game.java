@@ -16,6 +16,7 @@ public class Game extends JFrame implements Runnable {
 	private ZombiesList zombiesList;
 	private Help help;
 	private Play play;
+	private GameOver gameOver;
 
 	public Game() {
 
@@ -39,6 +40,7 @@ public class Game extends JFrame implements Runnable {
 		zombiesList = new ZombiesList(this);
 		help = new Help(this);
 		play = new Play(this);
+		gameOver = new GameOver(this);
 
 	}
 
@@ -126,6 +128,9 @@ public class Game extends JFrame implements Runnable {
 	}
 	public Play getPlay() {
 		return play;
+	}
+	public GameOver getGameOver() {
+		return gameOver;
 	}
 	public States getStates() {
 		return states;

@@ -9,8 +9,9 @@ import javax.imageio.ImageIO;
 public class Menu implements ScreenMethod {
 
     private Game game;
+	
 
-	private MyButton bPlaying, bPlantsList, bZombiesList, bQuit, bHelp;
+	private MyButton bPlaying, bPlantsList, bZombiesList, bQuit, bHelp, bGameOver;
 
 	public Menu(Game game) {
 		this.game = game;
@@ -29,6 +30,7 @@ public class Menu implements ScreenMethod {
         bZombiesList = new MyButton("Zombies List", 362, 28 + yOffset * 2, w, h);
 		bQuit = new MyButton("Quit", 362, 334, w, h);
         bHelp = new MyButton("Help", 203, 334, w, h);
+		bGameOver = new MyButton("GO", 0, 0, w, h);
 
 	}
 
@@ -61,6 +63,7 @@ public class Menu implements ScreenMethod {
         bZombiesList.draw(g);
 		bQuit.draw(g);
         bHelp.draw(g);
+        bGameOver.draw(g);
 
 	}
 
@@ -77,6 +80,8 @@ public class Menu implements ScreenMethod {
             game.setStates(States.ZOMBIESLIST);
         } else if (bHelp.getBounds().contains(x, y)) {
             game.setStates(States.HELP);
+		} else if (bGameOver.getBounds().contains(x, y)) {
+            game.setStates(States.GAMEOVER);
         }
 	}
 
@@ -87,6 +92,7 @@ public class Menu implements ScreenMethod {
         bZombiesList.setMouseOver(false);
 		bQuit.setMouseOver(false);
 		bHelp.setMouseOver(false);
+		bGameOver.setMouseOver(false);
 
 		if (bPlaying.getBounds().contains(x, y)) {
 			bPlaying.setMouseOver(true);
@@ -98,6 +104,8 @@ public class Menu implements ScreenMethod {
 			bQuit.setMouseOver(true);
 		} else if (bHelp.getBounds().contains(x, y)) {
 			bHelp.setMouseOver(true);
+		} else if (bGameOver.getBounds().contains(x, y)) {
+			bGameOver.setMouseOver(true);
 		}
 
 	}
@@ -115,8 +123,9 @@ public class Menu implements ScreenMethod {
 			bQuit.setMousePressed(true);
 		} else if (bHelp.getBounds().contains(x, y)) {
 			bHelp.setMousePressed(true);
+		} else if (bGameOver.getBounds().contains(x, y)) {
+			bGameOver.setMousePressed(true);
 		}
-
 	}
 
 	@Override
@@ -130,6 +139,7 @@ public class Menu implements ScreenMethod {
         bZombiesList.resetBooleans();
 		bQuit.resetBooleans();
         bHelp.resetBooleans();
+		bGameOver.resetBooleans();
 	}
 
 }

@@ -4,5 +4,6 @@ public enum States {
     PLANTSLIST,
     ZOMBIESLIST,
     HELP,
-    PLAY;
+    PLAY,
+    GAMEOVER;
 }

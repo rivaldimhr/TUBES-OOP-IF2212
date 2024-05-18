@@ -21,6 +21,8 @@ public class Render {
             game.getHelp().render(g);
         else if (game.getStates() == States.PLAY)
             game.getPlay().render(g);
+        else if (game.getStates() == States.GAMEOVER)
+            game.getGameOver().render(g);
 
 	}
 
