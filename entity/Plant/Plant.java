@@ -1,5 +1,6 @@
 package entity.Plant;
 
+import screen.Sun;
 import screen.GameMap;
 import screen.update.CustomListener;
 import entity.Entity;
@@ -29,6 +30,7 @@ public class Plant extends Entity implements CustomListener {
     private String img;
     private int timer = 0;
     public static ArrayList<Plant> plants = new ArrayList<Plant>();
+    public Sun sun = new Sun();
 
     public Plant(String name, int health, boolean is_aquatic, int attackDamage, int attackSpeed, int cost, int range,
             int cooldown, int x, int y, String img) {
@@ -40,6 +42,7 @@ public class Plant extends Entity implements CustomListener {
         this.y = y;
         this.img = img;
         // setDefaultvalues();
+        sun.subtractSun(cost);
 
     }
 
