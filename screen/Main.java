@@ -7,6 +7,7 @@ import screen.GameMap;
 import entity.Plant.Peashooter;
 import entity.Plant.Plant;
 import entity.Projecttail.Bullet;
+import entity.Zombie.DolphinRider;
 import entity.Zombie.Zombie;
 import entity.Zombie.Zombiefootball;
 
@@ -22,11 +23,12 @@ public class Main {
         window.setLocationRelativeTo(null);
         window.setVisible(true);
         gameMap.startGameThread();
-        Peashooter peashooter = new Peashooter(2 * GameMap.Tile_Size, 3 * GameMap.Tile_Size);
-        Plant.plants.add(peashooter);
-        // Zombiefootball zombiefootball = new Zombiefootball(9 * GameMap.Tile_Size, 3 *
+        // Peashooter peashooter = new Peashooter(7 * GameMap.Tile_Size, 3 *
         // GameMap.Tile_Size);
-        // Zombie.zombies.add(zombiefootball);
+        // Peashooter peashooter2 = new Peashooter(8 * GameMap.Tile_Size, 3 *
+        // GameMap.Tile_Size);
+        // Plant.plants.add(peashooter);
+        // Plant.plants.add(peashooter2);
     }
 
 }

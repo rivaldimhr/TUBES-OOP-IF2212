@@ -1,5 +1,12 @@
 package entity.Projecttail;
 
-public class Slowbullet {
+import entity.Projecttail.Bullet;
+
+public class Slowbullet extends Bullet {
+
+    public Slowbullet(int x, int y, int damage) {
+        super(x, y, damage);
+        // TODO Auto-generated constructor stub
+    }
 
 }

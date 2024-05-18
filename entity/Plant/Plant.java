@@ -66,7 +66,7 @@ public class Plant extends Entity implements CustomListener {
     }
 
     public boolean is_die() {
-        return is_die;
+        return health <= 0;
     }
 
     public void die() {

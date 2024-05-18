@@ -1,12 +1,41 @@
 package entity.Zombie;
 
 public class DolphinRider extends Zombie {
+    boolean instant_kill = false;
 
     public DolphinRider(int x, int y) {
         super("Dolphin Rider Zombie", 175, true, 100, 1, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\zombie_football.gif");
+                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\zombie_football.gif");
         // isi folder fotonya"DolphinRider");
         // TODO Auto-generated constructor stub
+    }
+
+    @Override
+    public void actionPerformed() {
+
+        hitplant();
+        if (moving) {
+            if (timer >= 1) {
+                move();
+                timer = 0;
+            } else {
+                timer++;
+            }
+        } else {
+            if (!instant_kill) {
+                instant_kill(target);
+                instant_kill = true;
+            } else {
+                if (timer >= 60) {
+                    target.takedamage(attackDamage);
+                    timer = 0;
+                } else {
+                    timer++;
+                }
+            }
+
+        }
+
     }
 
 }

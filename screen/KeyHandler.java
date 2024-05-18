@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.KeyEvent;
 
 public class KeyHandler implements KeyListener {
+
     public boolean upPressed, downPressed, leftPressed, rightPressed, numPressed;
     private GameMap gameMap;
     public boolean enterPressed;
@@ -11,6 +12,7 @@ public class KeyHandler implements KeyListener {
 
     public KeyHandler(GameMap gameMap) {
         this.gameMap = gameMap;
+
     }
 
     @Override

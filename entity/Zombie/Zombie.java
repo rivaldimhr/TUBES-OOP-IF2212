@@ -24,7 +24,7 @@ public class Zombie extends Entity implements CustomListener {
     private String img;
     protected int y;
     protected Zombie zombie;
-    private int timer = 0;
+    int timer = 0;
     boolean is_die = false;
     boolean moving = true;
     Plant target;
@@ -56,6 +56,10 @@ public class Zombie extends Entity implements CustomListener {
         if (health <= 0) {
             die();
         }
+    }
+
+    public void instant_kill(Plant plant) {
+        plant.setHealth(0);
     }
 
     public void move() {
