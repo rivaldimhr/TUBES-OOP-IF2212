@@ -6,9 +6,11 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.util.Iterator;
 import java.util.Random;
@@ -24,15 +26,26 @@ import entity.Zombie.NormalZombie;
 import screen.update.CustomListener;
 
 public class GameMap extends JPanel implements Runnable {
+    // Gamme State
+    public int gamestate;
+    public final int playstate = 1;
+    public final int pausestate = 2;
+    public final int win = 3;
+    public final int lose = 4;
+    public final int plantlis = 5;
+    public final int zombielist = 6;
+    public final int help = 7;
+
     public static Zombie[] zombies;
-    public final static int Tile_Size = 60;
-    final int Col = 11;
-    final int Row = 7;
-    final int Width = Tile_Size * Col;
-    final int Height = Tile_Size * Row;
+    public static final int Tile_Size = 60;
+    public static final int Col = 11;
+    public static final int Row = 7;
+    public static final int Width = Tile_Size * Col;
+    public static final int Height = Tile_Size * Row;
     private KeyHandler keyH = new KeyHandler(this);
     private int Speed = 2;
     private int timer = 0;
+    private int time = 0;
     private CustomListener listener;
     private int fps = 60;
     int playerX = 100;
@@ -46,6 +59,8 @@ public class GameMap extends JPanel implements Runnable {
     int tileX = 0;
     int tileY = Tile_Size;
     int selectedX, selectedY;
+    public Image GameOver;
+    public String imageGameover;
 
     public GameMap() {
         setLayout(new GridLayout(Row, Col));
@@ -54,12 +69,13 @@ public class GameMap extends JPanel implements Runnable {
         this.addKeyListener(keyH);
         this.setFocusable(true);
         loadBackgroundImage();
+        gamestate = playstate;
     }
 
     private void loadBackgroundImage() {
         try {
             this.background = ImageIO.read(new File(
-                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\background.png"));
+                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\background.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -87,6 +103,7 @@ public class GameMap extends JPanel implements Runnable {
 
     @Override
     public void run() {
+
         double interval = 1000000000 / fps;
         double delta = 0;
         long lastTime = System.nanoTime();
@@ -104,27 +121,76 @@ public class GameMap extends JPanel implements Runnable {
     }
 
     public void update() {
-        if (timer >= 60) {
-            int y = random.nextInt(1, 7);
-            if (y == 3 && y == 4) {
-                int x = random.nextInt(1, 2);
-                switch (x) {
-                    case 1:
-                        Zombie.zombies.add(new DolphinRider(10 * Tile_Size, y * Tile_Size));
-                        break;
-                }
+        // if (keyH.numPressed == true){
+        // keyH.numPressed = false;
+        // int plantIndex = keyH.numKey;
+        // switch (plantIndex) {
+        // case 1:
+        // PlantSpawner.spawn(new Cactus(selectedX, selectedY));
+        // break;
+        // case 2:
+        // PlantSpawner.spawn(new IceShroom(selectedX, selectedY));
+        // break;
+        // case 3:
+        // PlantSpawner.spawn(new Jalapeno(selectedX, selectedY));
+        // break;
+        // case 4:
+        // PlantSpawner.spawn(new Lilypad(selectedX, selectedY));
+        // break;
+        // case 5:
+        // PlantSpawner.spawn(new PeaShooter(selectedX, selectedY));
+        // break;
+        // case 6:
+        // PlantSpawner.spawn(new SnowPea(selectedX, selectedY));
+        // break;
+        // case 7:
+        // GameMap.plants.removeIf(plant -> plant.getX() == selectedX && plant.getY() ==
+        // selectedY);
+        // break;
+        // }
+
+        if (time >= 200) {
+            if (Zombie.zombies.size() <= 0) {
+                gamestate = win;
             } else {
-                int x = random.nextInt(1, 4);
-                switch (x) {
-                    case 1:
-                        Zombie.zombies.add(new Zombiefootball(10 * Tile_Size, y * Tile_Size));
-                        break;
-                    case 2:
-                        Zombie.zombies.add(new ConeHeadZombie(10 * Tile_Size, y * Tile_Size));
-                        break;
-                    case 3:
-                        Zombie.zombies.add(new NormalZombie(10 * Tile_Size, y * Tile_Size));
-                        break;
+                gamestate = lose;
+
+            }
+        } else {
+            for (Zombie zombie : Zombie.zombies) {
+                if (zombie.getX() == 0) {
+                    gamestate = lose;
+
+                    break;
+                }
+            }
+        }
+
+        if (timer >= 60) {
+            time++;
+            System.out.println(time);
+            if (Zombie.zombies.size() < 10) {
+                int y = random.nextInt(1, 7);
+                if (y == 3 || y == 4) {
+                    int x = random.nextInt(1, 2);
+                    switch (x) {
+                        case 1:
+                            Zombie.zombies.add(new DolphinRider(10 * Tile_Size, y * Tile_Size));
+                            break;
+                    }
+                } else {
+                    int x = random.nextInt(1, 4);
+                    switch (x) {
+                        case 1:
+                            Zombie.zombies.add(new Zombiefootball(10 * Tile_Size, y * Tile_Size));
+                            break;
+                        case 2:
+                            Zombie.zombies.add(new ConeHeadZombie(10 * Tile_Size, y * Tile_Size));
+                            break;
+                        case 3:
+                            Zombie.zombies.add(new NormalZombie(10 * Tile_Size, y * Tile_Size));
+                            break;
+                    }
                 }
             }
             timer = 0;
@@ -196,6 +262,16 @@ public class GameMap extends JPanel implements Runnable {
         }
     }
 
+    public void drawGameOver(Graphics2D gd) {
+        try {
+            GameOver = ImageIO.read(new File(
+                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\cursor.png"));
+        } catch (Exception e) {
+        }
+
+        gd.drawImage(GameOver, GameMap.Tile_Size, GameMap.Tile_Size, null);
+    }
+
     private void stopPlayerMovement() {
         playerSpeedX = 0;
         playerSpeedY = 0;
@@ -211,16 +287,30 @@ public class GameMap extends JPanel implements Runnable {
         Graphics2D g2 = (Graphics2D) g;
         drawbackground(g2);
         // drawPlayer(g2);
-        for (Bullet bullet : Bullet.bullets) {
-            bullet.drawBullet(g2);
+        // for (Bullet bullet : Bullet.bullets) {
+        // bullet.drawBullet(g2);
+        // }
+        // for (Plant plant : Plant.plants) {
+        // plant.drawPlant(g2);
+        // }
+        // for (Zombie zombie : Zombie.zombies) {
+        // zombie.drawZombie(g2);
+        // }
+        for (int i = 0; i < Zombie.zombies.size(); i++) {
+            if (Zombie.zombies.get(i) != null) {
+                Zombie.zombies.get(i).drawZombie(g2);
+            }
         }
-        for (Plant plant : Plant.plants) {
-            plant.drawPlant(g2);
+        for (int i = 0; i < Plant.plants.size(); i++) {
+            if (Plant.plants.get(i) != null) {
+                Plant.plants.get(i).drawPlant(g2);
+            }
         }
-        for (Zombie zombie : Zombie.zombies) {
-            zombie.drawZombie(g2);
+        for (int i = 0; i < Bullet.bullets.size(); i++) {
+            if (Bullet.bullets.get(i) != null) {
+                Bullet.bullets.get(i).drawBullet(g2);
+            }
         }
-
         drawkursor(g2);
     }
 
@@ -232,7 +322,7 @@ public class GameMap extends JPanel implements Runnable {
 
         try {
             img = ImageIO.read(new File(
-                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\cursor.png"));
+                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\cursor.png"));
         } catch (Exception e) {
         }
 

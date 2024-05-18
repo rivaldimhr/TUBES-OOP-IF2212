@@ -1,12 +1,14 @@
 package entity.Projecttail;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import entity.Zombie.Zombie;
 import screen.GameMap;
 import screen.update.CustomListener;
@@ -16,6 +18,7 @@ public class Bullet implements CustomListener {
     private int y;
     private int damage;
     public boolean hit = false;
+    public String img;
     private BufferedImage imageBullet;
     // private int timer = 0;
     public static ArrayList<Bullet> bullets = new ArrayList<Bullet>();
@@ -24,7 +27,7 @@ public class Bullet implements CustomListener {
         this.x = x;
         this.y = y;
         this.damage = damage;
-        loadImagePlant();
+        // loadImagePlant();
     }
 
     // udh tabrakan apa belum
@@ -39,26 +42,41 @@ public class Bullet implements CustomListener {
     }
 
     public void drawBullet(Graphics2D g) {
+        try {
+            try {
+                imageBullet = ImageIO.read(new File(img)); // Adjust
+                // this
+                // to
+                // your
+                // image
+                // file
+                // path
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         if (imageBullet != null) {
-            g.drawImage(imageBullet, x, y, 45, 45, null);
+            g.drawImage(imageBullet, x, y, GameMap.Tile_Size, GameMap.Tile_Size, null);
+        } else {
+            System.err.println("Error: Bullet image is null.");
         }
     }
 
-    private void loadImagePlant() {
-        try {
-            imageBullet = ImageIO.read(new File(
-                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\Pea.png")); // Adjust
-            // this
-            // to
-            // your
-            // image
-            // file
-            // path
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-    // attack
+    // private void loadImagePlant() {
+    // try {
+    // imageBullet = ImageIO.read(new File(img)); // Adjust
+    // // this
+    // // to
+    // // your
+    // // image
+    // // file
+    // // path
+    // } catch (IOException ex) {
+    // ex.printStackTrace();
+    // }
+    // }
 
     @Override
     public void actionPerformed() {
