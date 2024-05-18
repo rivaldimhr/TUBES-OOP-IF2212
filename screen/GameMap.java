@@ -61,6 +61,7 @@ public class GameMap extends JPanel implements Runnable {
     int selectedX, selectedY;
     public Image GameOver;
     public String imageGameover;
+    public Sun sun = new Sun();
 
     public GameMap() {
         setLayout(new GridLayout(Row, Col));
@@ -75,7 +76,7 @@ public class GameMap extends JPanel implements Runnable {
     private void loadBackgroundImage() {
         try {
             this.background = ImageIO.read(new File(
-                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\background.png"));
+                    "image\\background_day.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -198,6 +199,10 @@ public class GameMap extends JPanel implements Runnable {
             timer++;
         }
 
+        if (time%100==0 && time%200!=0) {
+            sun.autoSun();
+        }
+
         if (keyH.upPressed) {
             keyH.upPressed = false;
             if (tileY == Tile_Size) {
@@ -311,6 +316,7 @@ public class GameMap extends JPanel implements Runnable {
                 Bullet.bullets.get(i).drawBullet(g2);
             }
         }
+        sun.drawSun(g2);
         drawkursor(g2);
     }
 
