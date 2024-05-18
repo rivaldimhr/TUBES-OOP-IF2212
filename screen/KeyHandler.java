@@ -8,7 +8,7 @@ public class KeyHandler implements KeyListener {
     public boolean upPressed, downPressed, leftPressed, rightPressed, numPressed;
     private GameMap gameMap;
     public boolean enterPressed;
-    int numkey; // nyimpen nomor yg di teka
+    public int numkey ; // nyimpen nomor yg di teka
 
     public KeyHandler(GameMap gameMap) {
         this.gameMap = gameMap;
@@ -36,9 +36,11 @@ public class KeyHandler implements KeyListener {
                 break;
             case KeyEvent.VK_1:
                 numPressed = true;
+                numkey = 1;
                 break;
             case KeyEvent.VK_2:
                 numPressed = true;
+                numkey = 2;
                 break;
             case KeyEvent.VK_3:
                 numPressed = true;

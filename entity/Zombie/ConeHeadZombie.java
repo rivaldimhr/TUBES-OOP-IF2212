@@ -4,7 +4,7 @@ public class ConeHeadZombie extends Zombie {
 
     public ConeHeadZombie(int x, int y) {
         super("Cone Head Zombie", 250, false, 100, 1, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\Conehead_Zombie.gif");
+                "image\\Conehead_Zombie.gif");
         // TODO Auto-generated constructor stub
     }
 
