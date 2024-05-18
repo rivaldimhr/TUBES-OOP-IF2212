@@ -19,6 +19,8 @@ public class Render {
             game.getZombiesList().render(g);
         else if (game.getStates() == States.HELP)
             game.getHelp().render(g);
+        else if (game.getStates() == States.PLAY)
+            game.getPlay().render(g);
 
 	}
 

@@ -35,15 +35,15 @@ public class Menu implements ScreenMethod {
 	@Override
 	public void render(Graphics g) {
        
-        drawButtons(g);
         drawBackground(g);
+        drawButtons(g);
 		
 
 	}
 
 	private void drawBackground(Graphics g) {
         BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("design pvz (13).png");
+		InputStream is = getClass().getResourceAsStream("MENU.png");
 
 		try {
 			img = ImageIO.read(is);
@@ -68,7 +68,7 @@ public class Menu implements ScreenMethod {
 	public void mouseClicked(int x, int y) {
 
 		if (bPlaying.getBounds().contains(x, y)) {
-			System.out.println("Playing clicked!");
+			game.setStates(States.PLAY);
         } else if (bPlantsList.getBounds().contains(x, y)) {
 			game.setStates(States.PLANTSLIST);
         } else if (bQuit.getBounds().contains(x, y)) {

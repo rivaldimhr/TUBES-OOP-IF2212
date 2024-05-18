@@ -6,33 +6,25 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 
-public class ZombiesList implements ScreenMethod {
+public class GameOver implements ScreenMethod {
 
     private Game game;
 
-	private MyButton  b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11;
-	private BufferedImage[] zombieDesc = new BufferedImage[10];
-	private BufferedImage selectedZombie = null;
+	private MyButton  b1, b2;
+	private BufferedImage[] GameOver = new BufferedImage[2];
+	private BufferedImage selectedGameOver = null;
 
-	public ZombiesList(Game game) {
+	public GameOver(Game game) {
 		this.game = game;
 
-		initZombieDesc();
+		initGameOver();
 		initButtons();
 
 	}
 
-	private void initZombieDesc() {
-		zombieDesc[0] = getImage("NORMAL");
-		zombieDesc[1] =  getImage("DUCKY TUBE-CONE");
-		zombieDesc[2] =  getImage("CONEHEAD");
-		zombieDesc[3] =  getImage("POLE VAULTING");
-		zombieDesc[4] =  getImage("FOOTBALL");
-		zombieDesc[5] =  getImage("BUCKETHEAD");
-		zombieDesc[6] =  getImage("DUCKY TUBE");
-		zombieDesc[7] =  getImage("DOLPHIN RIDER");
-		zombieDesc[8] =  getImage("NEWSPAPER");
-		zombieDesc[9] =  getImage("SNORKEL");
+	private void initGameOver() {
+		GameOver[0] = getImage("NORMAL");
+		GameOver[1] =  getImage("DUCKY TUBE-CONE");
 
 	}
 

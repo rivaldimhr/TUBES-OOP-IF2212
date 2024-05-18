@@ -6,13 +6,13 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 
-public class Help implements ScreenMethod {
+public class Play implements ScreenMethod {
 
     private Game game;
 
 	private MyButton  b1;
 
-	public Help(Game game) {
+	public Play(Game game) {
 		this.game = game;
 
 		initButtons();
@@ -37,7 +37,7 @@ public class Help implements ScreenMethod {
 
 	private void drawBackground(Graphics g) {
         BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("HELP.png");
+		InputStream is = getClass().getResourceAsStream("DECK-INVENTORY.png");
 
 		try {
 			img = ImageIO.read(is);

@@ -23,16 +23,16 @@ public class PlantsList implements ScreenMethod {
 	}
 
 	private void initPlantDesc() {
-		plantDesc[0] = getImage("design pvz (16)");
-		plantDesc[1] =  getImage("design pvz (17)");
-		plantDesc[2] =  getImage("7");
-		plantDesc[3] =  getImage("8");
-		plantDesc[4] =  getImage("9");
-		plantDesc[5] =  getImage("10");
-		// plantDesc[6] =  getImage("");
-		// plantDesc[7] =  getImage("");
-		// plantDesc[8] =  getImage("");
-		// plantDesc[9] =  getImage("");
+		plantDesc[0] = getImage("PEASHOOTER");
+		plantDesc[1] =  getImage("SUNFLOWER");
+		plantDesc[2] =  getImage("WALL-NUT");
+		plantDesc[3] =  getImage("SNOW PEA");
+		plantDesc[4] =  getImage("SQUASH");
+		plantDesc[5] =  getImage("LILY PAD");
+		plantDesc[6] =  getImage("TALL-NUT");
+		plantDesc[7] =  getImage("PUFF-SHROOM");
+		plantDesc[8] =  getImage("TANGLE KELP");
+		plantDesc[9] =  getImage("REPEATER");
 
 	}
 
@@ -72,7 +72,7 @@ public class PlantsList implements ScreenMethod {
 	}
 
 	private void drawBackground(Graphics g) {
-        BufferedImage img = getImage("design pvz (16)");
+        BufferedImage img = getImage("PLANT");
 
         g.drawImage(img, 0, 0, null);
     }
@@ -120,25 +120,26 @@ public class PlantsList implements ScreenMethod {
         if (b4.getBounds().contains(x, y)) {
 			selectedPlant = plantDesc[3];
         }
-        // if (b5.getBounds().contains(x, y)) {
-		// 	selectedPlant = plantDesc[8];
-        // }
+        if (b5.getBounds().contains(x, y)) {
+			selectedPlant = plantDesc[8];
+        }
         if (b6.getBounds().contains(x, y)) {
 			selectedPlant = plantDesc[4];
         }
         if (b7.getBounds().contains(x, y)) {
 			selectedPlant = plantDesc[5];
         }
-        // if (b8.getBounds().contains(x, y)) {
-		// 	selectedPlant = plantDesc[6];
-        // }
-        // if (b9.getBounds().contains(x, y)) {
-		// 	selectedPlant = plantDesc[7];
-        // }
-        // if (b10.getBounds().contains(x, y)) {
-		// 	selectedPlant = plantDesc[9];
-        // }
+        if (b8.getBounds().contains(x, y)) {
+			selectedPlant = plantDesc[6];
+        }
+        if (b9.getBounds().contains(x, y)) {
+			selectedPlant = plantDesc[7];
+        }
+        if (b10.getBounds().contains(x, y)) {
+			selectedPlant = plantDesc[9];
+        }
         if (b11.getBounds().contains(x, y)) {
+			selectedPlant = null;
 			game.setStates(States.MENU);
         }
 	}

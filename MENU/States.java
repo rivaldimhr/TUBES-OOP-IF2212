@@ -3,5 +3,6 @@ public enum States {
     PLAYING,
     PLANTSLIST,
     ZOMBIESLIST,
-    HELP;
+    HELP,
+    PLAY;
 }
