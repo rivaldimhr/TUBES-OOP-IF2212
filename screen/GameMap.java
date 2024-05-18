@@ -16,7 +16,11 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.TimeoutException;
 import java.util.random.RandomGenerator;
+
+import entity.Plant.Peashooter;
 import entity.Plant.Plant;
+import entity.Plant.Snowpea;
+import entity.Plant.Wallnut;
 import entity.Projecttail.Bullet;
 import entity.Zombie.DolphinRider;
 import entity.Zombie.Zombie;
@@ -122,33 +126,26 @@ public class GameMap extends JPanel implements Runnable {
     }
 
     public void update() {
-        // if (keyH.numPressed == true){
-        // keyH.numPressed = false;
-        // int plantIndex = keyH.numKey;
-        // switch (plantIndex) {
-        // case 1:
-        // PlantSpawner.spawn(new Cactus(selectedX, selectedY));
-        // break;
-        // case 2:
-        // PlantSpawner.spawn(new IceShroom(selectedX, selectedY));
-        // break;
-        // case 3:
-        // PlantSpawner.spawn(new Jalapeno(selectedX, selectedY));
-        // break;
-        // case 4:
-        // PlantSpawner.spawn(new Lilypad(selectedX, selectedY));
-        // break;
-        // case 5:
-        // PlantSpawner.spawn(new PeaShooter(selectedX, selectedY));
-        // break;
-        // case 6:
-        // PlantSpawner.spawn(new SnowPea(selectedX, selectedY));
-        // break;
+        if (keyH.numPressed == true) {
+            keyH.numPressed = false;
+            int plantIndex = keyH.numkey;
+            String namaplant = Inventory.selectedPlants.get(plantIndex - 1);
+            switch (namaplant) {
+                case "image/kentang.png":
+                    Wallnut wallnut = new Wallnut(selectedX, selectedY);
+                    Plant.plants.add(wallnut);
+                    break;
+                case "image/peashooter.png":
+                    Peashooter peashooter = new Peashooter(selectedX, selectedY);
+                    Plant.plants.add(peashooter);
+                    break;
+            }
+        }
+
         // case 7:
         // GameMap.plants.removeIf(plant -> plant.getX() == selectedX && plant.getY() ==
         // selectedY);
         // break;
-        // }
 
         if (time >= 200) {
             if (Zombie.zombies.size() <= 0) {
@@ -199,7 +196,7 @@ public class GameMap extends JPanel implements Runnable {
             timer++;
         }
 
-        if (time%200<=100) {
+        if (time % 200 <= 100) {
             sun.autoSun();
         }
 
@@ -316,8 +313,16 @@ public class GameMap extends JPanel implements Runnable {
                 Bullet.bullets.get(i).drawBullet(g2);
             }
         }
+        int x=1;
+        for (String string : Inventory.selectedPlants) {
+            new Deck(x*Tile_Size, 0, string).drawdeck(g2);;
+            x++;
+            System.out.println(string);
+
+        }
         sun.drawSun(g2);
         drawkursor(g2);
+
     }
 
     public void drawkursor(Graphics2D gd) {
@@ -328,7 +333,7 @@ public class GameMap extends JPanel implements Runnable {
 
         try {
             img = ImageIO.read(new File(
-                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\cursor.png"));
+                    "image\\cursor.png"));
         } catch (Exception e) {
         }
 

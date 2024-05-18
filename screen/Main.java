@@ -1,6 +1,6 @@
 package screen;
 
-import java.awt.image.TileObserver;
+// import java.awt.image.TileObserver;
 
 import javax.swing.JFrame;
 import screen.GameMap;
@@ -17,12 +17,12 @@ public class Main {
         JFrame window = new JFrame("Plant vs Zombie");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setResizable(false);
-        GameMap gameMap = new GameMap();
-        window.add(gameMap);
+        Inventory inventory = new Inventory();
+        window.add(inventory);
         window.pack();// untuk mmengeluarkan panelnya
         window.setLocationRelativeTo(null);
         window.setVisible(true);
-        gameMap.startGameThread();
+        
         // Peashooter peashooter = new Peashooter(7 * GameMap.Tile_Size, 3 *
         // GameMap.Tile_Size);
         // Peashooter peashooter2 = new Peashooter(8 * GameMap.Tile_Size, 3 *

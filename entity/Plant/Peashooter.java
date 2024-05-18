@@ -8,8 +8,8 @@ public class Peashooter extends Plant {
     private int timer;
 
     public Peashooter(int x, int y) {
-        super("Peashooter", 100, false, 25, 2, 100, -1, 10, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\TUBES OOP JAVA\\image\\pea_shooter.gif");
+        super("peashooter", 100, false, 25, 2, 100, -1, 10, x, y,
+                "image\\pea_shooter.gif");
     }
 
     public void attack() {
