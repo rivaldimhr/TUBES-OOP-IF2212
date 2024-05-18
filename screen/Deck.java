@@ -23,7 +23,7 @@ public class Deck {
     public void drawdeck(Graphics2D gd) {
         try {
             png = ImageIO.read(new File(
-                    "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\deck.png"));
+                    img));
         } catch (IOException e) {
         }
         gd.drawImage(png, x, y, GameMap.Tile_Size, GameMap.Tile_Size, null);

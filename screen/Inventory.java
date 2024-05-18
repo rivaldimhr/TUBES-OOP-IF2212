@@ -15,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+
 public class Inventory extends JPanel {
     private BufferedImage[] images = new BufferedImage[10];
     private String[] imageFiles = {
@@ -31,9 +32,10 @@ public class Inventory extends JPanel {
     };
     private int[] imagePositions = new int[10];
     private ArrayList<Integer> deck = new ArrayList<>();
-    private List<String> selectedPlants = new ArrayList<>(); // ArrayList untuk menyimpan nama tanaman yang dipilih
+    public static List<String> selectedPlants = new ArrayList<>(); // ArrayList untuk menyimpan nama tanaman yang dipilih
     private BufferedImage startButtonImage;
 
+    
     public Inventory() {
         this.setPreferredSize(new Dimension(60 * 11, 60 * 8));
         this.setDoubleBuffered(true);
@@ -45,7 +47,10 @@ public class Inventory extends JPanel {
                 int y = e.getY();
                 handleClick(e.getX(), e.getY());
                 if (x >= 550 && x <= 650 && y >= 10 && y <= 40) {
-                    buttonClicked();
+                    GamePanel.playgame();
+                }
+                for (String string : selectedPlants) {
+                    System.out.println(string);
                 }
             }
         });
@@ -86,11 +91,11 @@ public class Inventory extends JPanel {
     }
 
     private void addToSelectedPlants(String filePath) {
-        selectedPlants.add(getPlantName(filePath));
+        selectedPlants.add(filePath);
     }
 
     private void removeFromSelectedPlants(String filePath) {
-        selectedPlants.remove(getPlantName(filePath));
+        selectedPlants.remove(filePath);
     }
 
     private void displaySelectedPlants() {
