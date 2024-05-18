@@ -8,7 +8,7 @@ public class Snowpea extends Plant {
 
     public Snowpea(int x, int y) {
         super("Snowpea", 100, false, 25, 4, 175, -1, 10, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\pea_shooter.gif");
+                "image\\snowpea.png");
     }
 
     public void attack() {

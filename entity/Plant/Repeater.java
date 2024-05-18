@@ -8,7 +8,7 @@ public class Repeater extends Plant {
 
     public Repeater(int x, int y) {
         super("Repeater", 100, false, 25, 4, 200, -1, 10, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\pea_shooter.gif");
+                "image\\repeater.gif");
     }
 
     public void attack() {

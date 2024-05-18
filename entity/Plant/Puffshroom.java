@@ -8,7 +8,7 @@ public class Puffshroom extends Plant {
 
     public Puffshroom(int x, int y) {
         super("Puffshroom", 70, false, 25, 4, 0, 3, 10, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\pea_shooter.gif");
+                "image\\PuffShroom.png");
     }
 
     public void attack() {

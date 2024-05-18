@@ -5,7 +5,7 @@ public class DolphinRider extends Zombie {
 
     public DolphinRider(int x, int y) {
         super("Dolphin Rider Zombie", 175, true, 100, 1, x, y,
-                "image\\zombie_football.gif");
+                "image\\Dolphinride.gif");
         // isi folder fotonya"DolphinRider");
         // TODO Auto-generated constructor stub
     }

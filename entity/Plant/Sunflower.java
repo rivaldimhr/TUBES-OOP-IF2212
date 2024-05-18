@@ -2,6 +2,7 @@ package entity.Plant;
 
 import entity.Projecttail.Bullet;
 import entity.Zombie.Zombie;
+import screen.Sun;
 
 public class Sunflower extends Plant {
     private int timer;
@@ -9,7 +10,7 @@ public class Sunflower extends Plant {
 
     public Sunflower(int x, int y) {
         super("Sunflower", 100, false, 0, 0, 50, 0, 10, x, y,
-                "image\\sun_flower.gif");
+                "image\\Sunflower.gif");
     }
 
     @Override

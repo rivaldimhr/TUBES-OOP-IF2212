@@ -44,15 +44,19 @@ public class KeyHandler implements KeyListener {
                 break;
             case KeyEvent.VK_3:
                 numPressed = true;
+                numkey = 3;
                 break;
             case KeyEvent.VK_4:
                 numPressed = true;
+                numkey = 4;
                 break;
             case KeyEvent.VK_5:
                 numPressed = true;
+                numkey = 5;
                 break;
             case KeyEvent.VK_6:
                 numPressed = true;
+                numkey = 6;
                 break;
 
         }

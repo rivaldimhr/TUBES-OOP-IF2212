@@ -8,7 +8,7 @@ public class TangleKelp extends Plant {
 
     public TangleKelp(int x, int y) {
         super("TangleKelp", 100, true, 5000, 0, 50, 1, 20, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\pea_shooter.gif");
+                "image\\TangleKelp.gif");
     }
 
     public void attack() {

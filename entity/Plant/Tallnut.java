@@ -8,7 +8,7 @@ public class Tallnut extends Plant {
 
     public Tallnut(int x, int y) {
         super("Tall-nut", 2000, false, 0, 0, 125, 0, 20, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\pea_shooter.gif");
+                "image\\TallNut1.png");
     }
 
     public void attack() {

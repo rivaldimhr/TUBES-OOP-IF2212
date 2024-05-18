@@ -8,7 +8,7 @@ public class Lilypad extends Plant {
 
     public Lilypad(int x, int y) {
         super("Lilypad", 100, true, 0, 0, 25, 0, 10, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\pea_shooter.gif");
+                "image\\lily_pad.gif");
     }
 
     public void attack() {

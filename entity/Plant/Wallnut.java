@@ -8,7 +8,7 @@ public class Wallnut extends Plant {
 
     public Wallnut(int x, int y) {
         super("Wall-nut", 1000, false, 0, 0, 50, 0, 20, x, y,
-                "image\\walnut_full_life.gif");
+                "image\\Wallnut1.png");
     }
 
     // public void attack() {

@@ -48,11 +48,14 @@ public class Sun extends JPanel{
     }
 
     // Return totalSun
+    public int getSun() {
+        return totalSun;
+    }
+
     public int getRandTimer() {
         return randTimer;
     }
 
-    // Return totalSun
     public int getSunTimer() {
         return randTimer;
     }

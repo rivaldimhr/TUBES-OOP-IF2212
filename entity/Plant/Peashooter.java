@@ -9,7 +9,7 @@ public class Peashooter extends Plant {
 
     public Peashooter(int x, int y) {
         super("peashooter", 100, false, 25, 2, 100, -1, 10, x, y,
-                "image\\pea_shooter.gif");
+                "image\\peashooter.gif");
     }
 
     public void attack() {

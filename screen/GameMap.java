@@ -17,9 +17,16 @@ import java.util.Random;
 import java.util.concurrent.TimeoutException;
 import java.util.random.RandomGenerator;
 
+import entity.Plant.Lilypad;
 import entity.Plant.Peashooter;
 import entity.Plant.Plant;
+import entity.Plant.Puffshroom;
+import entity.Plant.Repeater;
 import entity.Plant.Snowpea;
+import entity.Plant.Squash;
+import entity.Plant.Sunflower;
+import entity.Plant.Tallnut;
+import entity.Plant.TangleKelp;
 import entity.Plant.Wallnut;
 import entity.Projecttail.Bullet;
 import entity.Zombie.DolphinRider;
@@ -132,13 +139,63 @@ public class GameMap extends JPanel implements Runnable {
             String namaplant = Inventory.selectedPlants.get(plantIndex - 1);
             switch (namaplant) {
                 case "image/kentang.png":
-                    Wallnut wallnut = new Wallnut(selectedX, selectedY);
-                    Plant.plants.add(wallnut);
-                    break;
+                    if (sun.getSun() >= 50) {
+                        Wallnut wallnut = new Wallnut(selectedX, selectedY);
+                        Plant.plants.add(wallnut);
+                        break;
+                    }
                 case "image/peashooter.png":
-                    Peashooter peashooter = new Peashooter(selectedX, selectedY);
-                    Plant.plants.add(peashooter);
+                    if (sun.getSun() >= 100) {
+                        Peashooter peashooter = new Peashooter(selectedX, selectedY);
+                        Plant.plants.add(peashooter);
+                        break;
+                    }
+                case "image/sunflower.png":
+                    if (sun.getSun() >= 50) {
+                        Sunflower sunflower = new Sunflower(selectedX, selectedY);
+                        Plant.plants.add(sunflower);
+                        break;
+                    }
+                case "image/kentang_gede.png":
+                    if (sun.getSun() >= 100) {
+                        Tallnut tallnut = new Tallnut(selectedX, selectedY);
+                        Plant.plants.add(tallnut);
+                        break;
+                    }
+                case "image/mushroom.png":
+                    Puffshroom puffshroom = new Puffshroom(selectedX, selectedY);
+                    Plant.plants.add(puffshroom);
                     break;
+                case "image/squash.png":
+                    if (sun.getSun() >= 50) {
+                        Squash squash = new Squash(selectedX, selectedY);
+                        Plant.plants.add(squash);
+                        break;
+                    }
+                case "image/lilipad.png":
+                    if (sun.getSun() >= 25) {
+                        Lilypad lilypad = new Lilypad(selectedX, selectedY);
+                        Plant.plants.add(lilypad);
+                        break;
+                    }
+                case "image/double_peashooter.png":
+                    if (sun.getSun() >= 200) {
+                        Repeater repeater = new Repeater(selectedX, selectedY);
+                        Plant.plants.add(repeater);
+                        break;
+                    }
+                case "image/tangle_kelp.png":
+                    if (sun.getSun() >= 50) {
+                        TangleKelp tanglekelp = new TangleKelp(selectedX, selectedY);
+                        Plant.plants.add(tanglekelp);
+                        break;
+                    }
+                case "image/peashooter_ice.png":
+                    if (sun.getSun() >= 175) {
+                        Snowpea snowpea = new Snowpea(selectedX, selectedY);
+                        Plant.plants.add(snowpea);
+                        break;
+                    }
             }
         }
 
@@ -317,8 +374,6 @@ public class GameMap extends JPanel implements Runnable {
         for (String string : Inventory.selectedPlants) {
             new Deck(x*Tile_Size, 0, string).drawdeck(g2);;
             x++;
-            System.out.println(string);
-
         }
         sun.drawSun(g2);
         drawkursor(g2);

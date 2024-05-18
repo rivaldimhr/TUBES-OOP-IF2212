@@ -8,7 +8,7 @@ public class Squash extends Plant {
 
     public Squash(int x, int y) {
         super("Squash", 100, false, 5000, 0, 50, 1, 20, x, y,
-                "C:\\Users\\User\\Documents\\bahasa pemrograman\\java\\Basic Java plant vs Zombie\\image\\pea_shooter.gif");
+                "image\\Squash.gif");
     }
 
     public void attack() {
