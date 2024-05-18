@@ -31,6 +31,8 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
                 game.getPlantsList().mouseClicked(e.getX(), e.getY());
             else if (game.getStates() == States.ZOMBIESLIST)
                 game.getZombiesList().mouseClicked(e.getX(), e.getY());
+            else if (game.getStates() == States.HELP)
+                game.getHelp().mouseClicked(e.getX(), e.getY());
 		}
 	}
 

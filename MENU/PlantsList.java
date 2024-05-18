@@ -23,31 +23,39 @@ public class PlantsList implements ScreenMethod {
 	}
 
 	private void initPlantDesc() {
-		plantDesc[0] = getImage("9");
-		plantDesc[1] =  getImage("10");
+		plantDesc[0] = getImage("design pvz (16)");
+		plantDesc[1] =  getImage("design pvz (17)");
+		plantDesc[2] =  getImage("7");
+		plantDesc[3] =  getImage("8");
+		plantDesc[4] =  getImage("9");
+		plantDesc[5] =  getImage("10");
+		// plantDesc[6] =  getImage("");
+		// plantDesc[7] =  getImage("");
+		// plantDesc[8] =  getImage("");
+		// plantDesc[9] =  getImage("");
 
 	}
 
 	private void initButtons() {
 
-		int w = 100;
-		int h = 130;
-		int x = 82;
-		int y = 114;
+		int w = 60;
+		int h = 80;
+		int x = 58;
+		int y = 105;
 		int xOffset = w + 60;
-		int yOffset = h + 65;
+		int yOffset = h + 13;
 
-		b1 = new MyButton("Quit", x, y, w, h);
-		b2 = new MyButton("Quit", x + xOffset - 11, y, w, h);
-		b3 = new MyButton("Quit", x + 2 * xOffset - 22, y, w, h);
-		b4 = new MyButton("Quit", x + 3 * xOffset - 35, y, w, h);
-		b5 = new MyButton("Quit", x + 4 * xOffset - 46, y, w, h);
-		b6 = new MyButton("Quit", x, y + yOffset - 17, w, h);
-		b7 = new MyButton("Quit", x + xOffset - 11, y + yOffset - 17, w, h);
-		b8 = new MyButton("Quit", x + 2 * xOffset - 22, y + yOffset - 17, w, h);
-		b9 = new MyButton("Quit", x + 3 * xOffset - 33, y + yOffset - 17, w, h);
-		b10 = new MyButton("Quit", x + 4 * xOffset - 43, y + yOffset - 17, w, h);
-		b11 = new MyButton("Quit",1090, 17, 137, 50);
+		b1 = new MyButton("1", x, y, w, h);
+		b2 = new MyButton("2", x + xOffset - 28, y, w, h);
+		b3 = new MyButton("3", x + 2 * xOffset - 57, y, w, h);
+		b4 = new MyButton("4", x + 3 * xOffset - 84, y, w, h);
+		b5 = new MyButton("5", x + 4 * xOffset - 480, 295, w, h);
+		b6 = new MyButton("6", x, y + yOffset, w, h);
+		b7 = new MyButton("7", x + xOffset - 28, y + yOffset, w, h);
+		b8 = new MyButton("8", x + 2 * xOffset - 57, y + yOffset, w, h);
+		b9 = new MyButton("9", x + 3 * xOffset - 83, y + yOffset, w, h);
+		b10 = new MyButton("10", x + 4 * xOffset - 388, 200 + yOffset, w, h);
+		b11 = new MyButton("11",555, 15, 75, 22);
 	}
 
 	@Override
@@ -64,10 +72,9 @@ public class PlantsList implements ScreenMethod {
 	}
 
 	private void drawBackground(Graphics g) {
-        BufferedImage img = getImage("9");
+        BufferedImage img = getImage("design pvz (16)");
 
         g.drawImage(img, 0, 0, null);
-
     }
 
 	private BufferedImage getImage(String index) {
@@ -108,29 +115,29 @@ public class PlantsList implements ScreenMethod {
 			selectedPlant = plantDesc[1];
         }
         if (b3.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedPlant = plantDesc[2];
         }
         if (b4.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedPlant = plantDesc[3];
         }
-        if (b5.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
-        }
+        // if (b5.getBounds().contains(x, y)) {
+		// 	selectedPlant = plantDesc[8];
+        // }
         if (b6.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedPlant = plantDesc[4];
         }
         if (b7.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedPlant = plantDesc[5];
         }
-        if (b8.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
-        }
-        if (b9.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
-        }
-        if (b10.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
-        }
+        // if (b8.getBounds().contains(x, y)) {
+		// 	selectedPlant = plantDesc[6];
+        // }
+        // if (b9.getBounds().contains(x, y)) {
+		// 	selectedPlant = plantDesc[7];
+        // }
+        // if (b10.getBounds().contains(x, y)) {
+		// 	selectedPlant = plantDesc[9];
+        // }
         if (b11.getBounds().contains(x, y)) {
 			game.setStates(States.MENU);
         }

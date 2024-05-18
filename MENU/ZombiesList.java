@@ -11,45 +11,74 @@ public class ZombiesList implements ScreenMethod {
     private Game game;
 
 	private MyButton  b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11;
+	private BufferedImage[] zombieDesc = new BufferedImage[10];
+	private BufferedImage selectedZombie = null;
 
 	public ZombiesList(Game game) {
 		this.game = game;
 
+		initZombieDesc();
 		initButtons();
+
+	}
+
+	private void initZombieDesc() {
+		zombieDesc[0] = getImage("19");
+		zombieDesc[1] =  getImage("20");
+		zombieDesc[2] =  getImage("21");
+		zombieDesc[3] =  getImage("22");
+		// zombieDesc[4] =  getImage("");
+		zombieDesc[5] =  getImage("24");
+		zombieDesc[6] =  getImage("25");
+		zombieDesc[7] =  getImage("26");
+		// plantDesc[8] =  getImage("");
+		// plantDesc[9] =  getImage("");
+
 	}
 
 	private void initButtons() {
 
-		int w = 207;
-		int h = 200;
-		int x = 90;
-		int y = 177;
-		int xOffset = w + 21;
-		int yOffset = h + 66;
+		int w = 70;
+		int h = 70;
+		int x = 46;
+		int y = 117;
+		int xOffset = w + 60;
+		int yOffset = h + 25;
 
-		b1 = new MyButton("Quit", x, y, w, h);
-		b2 = new MyButton("Quit", x + xOffset, y, w, h);
-		b3 = new MyButton("Quit", x + 2 * xOffset, y, w, h);
-		b4 = new MyButton("Quit", x + 3 * xOffset, y, w, h);
-		b5 = new MyButton("Quit", x + 4 * xOffset, y, w, h);
-		b6 = new MyButton("Quit", x, y + yOffset, w, h);
-		b7 = new MyButton("Quit", x + xOffset, y + yOffset, w, h);
-		b8 = new MyButton("Quit", x + 2 * xOffset, y + yOffset, w, h);
-		b9 = new MyButton("Quit", x + 3 * xOffset, y + yOffset, w, h);
-		b10 = new MyButton("Quit", x + 4 * xOffset, y + yOffset, w, h);
-		b11 = new MyButton("Quit",1090, 17, 137, 50);
+		b1 = new MyButton("1", x, y, w, h);
+		b2 = new MyButton("2", x + xOffset - 35, y, w, h);
+		b3 = new MyButton("3", x + 2 * xOffset - 69, y, w, h);
+		b4 = new MyButton("4", x + 3 * xOffset - 105, y, w, h);
+		b5 = new MyButton("5", x + 4 * xOffset - 520, 308, w, h);
+		b6 = new MyButton("6", x, y + yOffset, w, h);
+		b7 = new MyButton("7", x + xOffset - 34, y + yOffset, w, h);
+		b8 = new MyButton("8", x + 2 * xOffset - 68, y + yOffset, w, h);
+		b9 = new MyButton("9", x + 3 * xOffset - 105, y + yOffset, w, h);
+		b10 = new MyButton("10", x + 4 * xOffset - 425, 212 + yOffset, w, h);
+		b11 = new MyButton("11",555, 15, 75, 22);
 	}
 
 	@Override
 	public void render(Graphics g) {
-        drawBackground(g);
 		drawButtons(g);
+		drawBackground(g);
+		drawZombieDesc(g);
 
 	}
 
+	private void drawZombieDesc(Graphics g) {
+		g.drawImage(selectedZombie, 0, 0, null);
+	}
+
 	private void drawBackground(Graphics g) {
-        BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("design pvz (9).png");
+        BufferedImage img = getImage("19");
+
+        g.drawImage(img, 0, 0, null);
+    }
+
+	private BufferedImage getImage(String index) {
+		BufferedImage img = null;
+		InputStream is = getClass().getResourceAsStream(index + ".png");
 
 		try {
 			img = ImageIO.read(is);
@@ -57,9 +86,8 @@ public class ZombiesList implements ScreenMethod {
 			System.out.println(e.getMessage());
 		}
 
-        g.drawImage(img, 0, 0, null);
-
-    }
+		return img;
+	}
 
     private void drawButtons(Graphics g) {
 
@@ -80,35 +108,35 @@ public class ZombiesList implements ScreenMethod {
 	@Override
 	public void mouseClicked(int x, int y) {
         if (b1.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedZombie = zombieDesc[0];
         }
         if (b2.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedZombie = zombieDesc[1];
         }
         if (b3.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedZombie = zombieDesc[2];
         }
         if (b4.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedZombie = zombieDesc[3];
         }
-        if (b5.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
-        }
-        if (b6.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
-        }
+        // if (b5.getBounds().contains(x, y)) {
+		// 	selectedZombie = zombieDesc[8];
+        // }
+        // if (b6.getBounds().contains(x, y)) {
+		// 	selectedZombie = zombieDesc[4];
+        // }
         if (b7.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedZombie = zombieDesc[5];
         }
         if (b8.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedZombie = zombieDesc[6];
         }
         if (b9.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
+			selectedZombie = zombieDesc[7];
         }
-        if (b10.getBounds().contains(x, y)) {
-			game.setStates(States.MENU);
-        }
+        // if (b10.getBounds().contains(x, y)) {
+		// 	selectedZombie = zombieDesc[9];
+        // }
         if (b11.getBounds().contains(x, y)) {
 			game.setStates(States.MENU);
         }

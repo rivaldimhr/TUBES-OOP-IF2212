@@ -10,7 +10,7 @@ public class Help implements ScreenMethod {
 
     private Game game;
 
-	private MyButton  b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11;
+	private MyButton  b1;
 
 	public Help(Game game) {
 		this.game = game;
@@ -20,26 +20,24 @@ public class Help implements ScreenMethod {
 
 	private void initButtons() {
 
-		int w = 154;
-		int h = 200;
-		int x = 97;
-		int y = 182;
-		int xOffset = w + 75;
-		int yOffset = h + 75;
+		int w = 75;
+		int h = 22;
+		int x = 555;
+		int y = 15;
 
 		b1 = new MyButton("Quit", x, y, w, h);
 	}
 
 	@Override
 	public void render(Graphics g) {
-        drawBackground(g);
 		drawButtons(g);
+		drawBackground(g);
 
 	}
 
 	private void drawBackground(Graphics g) {
         BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("7.png");
+		InputStream is = getClass().getResourceAsStream("design pvz (21).png");
 
 		try {
 			img = ImageIO.read(is);

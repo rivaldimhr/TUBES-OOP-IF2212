@@ -20,30 +20,30 @@ public class Menu implements ScreenMethod {
 
 	private void initButtons() {
 
-		int w = 180;
-		int h = w / 3;
+		int w = 100;
+		int h = 33;
 		int yOffset = 100;
 
-		bPlaying = new MyButton("Play", 550, 497, w, h);
-		bPlantsList = new MyButton("Plants List", 391, 295 + yOffset, w, h);
-        bZombiesList = new MyButton("Zombies List", 710, 194 + yOffset * 2, w, h);
-		bQuit = new MyButton("Quit", 710, 600, w, h);
-        bHelp = new MyButton("Help", 400, 600, w, h);
+		bPlaying = new MyButton("Play", 280, 280, w, h);
+		bPlantsList = new MyButton("Plants List", 197, 128 + yOffset, w, h);
+        bZombiesList = new MyButton("Zombies List", 362, 28 + yOffset * 2, w, h);
+		bQuit = new MyButton("Quit", 362, 334, w, h);
+        bHelp = new MyButton("Help", 203, 334, w, h);
 
 	}
 
 	@Override
 	public void render(Graphics g) {
        
-        drawBackground(g);
         drawButtons(g);
+        drawBackground(g);
 		
 
 	}
 
 	private void drawBackground(Graphics g) {
         BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("1.png");
+		InputStream is = getClass().getResourceAsStream("design pvz (13).png");
 
 		try {
 			img = ImageIO.read(is);
@@ -75,6 +75,8 @@ public class Menu implements ScreenMethod {
 			System.exit(0);
         } else if (bZombiesList.getBounds().contains(x, y)) {
             game.setStates(States.ZOMBIESLIST);
+        } else if (bHelp.getBounds().contains(x, y)) {
+            game.setStates(States.HELP);
         }
 	}
 
