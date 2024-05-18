@@ -199,7 +199,7 @@ public class GameMap extends JPanel implements Runnable {
             timer++;
         }
 
-        if (time%100==0 && time%200!=0) {
+        if (time%200<=100) {
             sun.autoSun();
         }
 
