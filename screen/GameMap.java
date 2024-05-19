@@ -1,6 +1,7 @@
 package screen;
 
 import java.awt.image.BufferedImage;
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -63,7 +64,8 @@ public class GameMap extends JPanel implements Runnable {
     int playerY = 100;
     double playerSpeedX;
     double playerSpeedY;
-    public BufferedImage background;
+    public BufferedImage background_day;
+    public BufferedImage background_night;
     private Thread gameThread;
     int x;
     RandomGenerator random = new Random();
@@ -86,16 +88,40 @@ public class GameMap extends JPanel implements Runnable {
 
     private void loadBackgroundImage() {
         try {
-            this.background = ImageIO.read(new File(
+            this.background_day = ImageIO.read(new File(
                     "image\\background_day.png"));
+            this.background_night = ImageIO.read(new File(
+                    "image\\background_night.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void drawbackground(Graphics2D g) {
-        if (background != null) {
-            g.drawImage(background, 0, 0, Width, Height, this);
+        if (background_day != null && background_day != null) {
+            if (time % 200 <= 80) {
+                g.drawImage(background_day, 0, 0, Width, Height, this);
+            } else  if (time%200 > 80 && time%200 <= 100) {
+                float alpha = time%200;
+                alpha = alpha-80;
+                alpha = alpha/20;
+                g.drawImage(background_day, 0, 0, Width, Height, this);
+                g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                g.drawImage(background_night, 0, 0, Width, Height, this);
+                g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+                System.out.println(alpha);
+            } else if (time%200 > 100 && time%180 <= 180) {
+                g.drawImage(background_night, 0, 0, Width, Height, this);
+            } else  if (time%200 > 180 && time%200 <= 200) {
+                float alpha = time%200;
+                alpha = alpha-180;
+                alpha = alpha/20;
+                g.drawImage(background_night, 0, 0, Width, Height, this);
+                g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                g.drawImage(background_day, 0, 0, Width, Height, this);
+                g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+                System.out.println(alpha);
+            }
         } else {
             g.setColor(Color.GRAY);
             g.fillRect(0, 0, Width, Height);
@@ -142,60 +168,62 @@ public class GameMap extends JPanel implements Runnable {
                     if (sun.getSun() >= 50) {
                         Wallnut wallnut = new Wallnut(selectedX, selectedY);
                         Plant.plants.add(wallnut);
-                        break;
                     }
+                    break;
                 case "image/peashooter.png":
                     if (sun.getSun() >= 100) {
                         Peashooter peashooter = new Peashooter(selectedX, selectedY);
                         Plant.plants.add(peashooter);
-                        break;
                     }
+                    break;
                 case "image/sunflower.png":
                     if (sun.getSun() >= 50) {
                         Sunflower sunflower = new Sunflower(selectedX, selectedY);
                         Plant.plants.add(sunflower);
-                        break;
                     }
+                    break;
                 case "image/kentang_gede.png":
                     if (sun.getSun() >= 100) {
                         Tallnut tallnut = new Tallnut(selectedX, selectedY);
                         Plant.plants.add(tallnut);
-                        break;
                     }
+                    break;
                 case "image/mushroom.png":
-                    Puffshroom puffshroom = new Puffshroom(selectedX, selectedY);
-                    Plant.plants.add(puffshroom);
+                    if (sun.getSun() >= 0) {
+                        Puffshroom puffshroom = new Puffshroom(selectedX, selectedY);
+                        Plant.plants.add(puffshroom);
+                    }
                     break;
                 case "image/squash.png":
                     if (sun.getSun() >= 50) {
                         Squash squash = new Squash(selectedX, selectedY);
                         Plant.plants.add(squash);
-                        break;
                     }
+                    break;
                 case "image/lilipad.png":
                     if (sun.getSun() >= 25) {
                         Lilypad lilypad = new Lilypad(selectedX, selectedY);
                         Plant.plants.add(lilypad);
-                        break;
                     }
+                    break;
                 case "image/double_peashooter.png":
                     if (sun.getSun() >= 200) {
                         Repeater repeater = new Repeater(selectedX, selectedY);
                         Plant.plants.add(repeater);
-                        break;
                     }
+                    break;
                 case "image/tangle_kelp.png":
                     if (sun.getSun() >= 50) {
                         TangleKelp tanglekelp = new TangleKelp(selectedX, selectedY);
                         Plant.plants.add(tanglekelp);
-                        break;
                     }
+                    break;
                 case "image/peashooter_ice.png":
                     if (sun.getSun() >= 175) {
                         Snowpea snowpea = new Snowpea(selectedX, selectedY);
                         Plant.plants.add(snowpea);
-                        break;
                     }
+                    break;
             }
         }
 
