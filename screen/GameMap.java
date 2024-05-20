@@ -99,28 +99,25 @@ public class GameMap extends JPanel implements Runnable {
 
     public void drawbackground(Graphics2D g) {
         if (background_day != null && background_day != null) {
+            int alpha = time%200;
             if (time % 200 <= 80) {
                 g.drawImage(background_day, 0, 0, Width, Height, this);
             } else  if (time%200 > 80 && time%200 <= 100) {
-                float alpha = time%200;
                 alpha = alpha-80;
                 alpha = alpha/20;
                 g.drawImage(background_day, 0, 0, Width, Height, this);
                 g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
                 g.drawImage(background_night, 0, 0, Width, Height, this);
                 g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-                System.out.println(alpha);
             } else if (time%200 > 100 && time%180 <= 180) {
                 g.drawImage(background_night, 0, 0, Width, Height, this);
             } else  if (time%200 > 180 && time%200 <= 200) {
-                float alpha = time%200;
                 alpha = alpha-180;
                 alpha = alpha/20;
                 g.drawImage(background_night, 0, 0, Width, Height, this);
                 g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
                 g.drawImage(background_day, 0, 0, Width, Height, this);
                 g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-                System.out.println(alpha);
             }
         } else {
             g.setColor(Color.GRAY);
