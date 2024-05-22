@@ -37,7 +37,7 @@ public class Inventory extends JPanel {
 
     
     public Inventory() {
-        this.setPreferredSize(new Dimension(60 * 11, 60 * 8));
+        this.setPreferredSize(new Dimension(60 * 11, 60 * 7));
         this.setDoubleBuffered(true);
         this.setBackground(Color.white);
         this.addMouseListener(new MouseAdapter() {

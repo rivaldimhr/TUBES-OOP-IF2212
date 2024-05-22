@@ -5,5 +5,7 @@ public enum States {
     ZOMBIESLIST,
     HELP,
     PLAY,
-    GAMEOVER;
+    GAMEOVER,
+    WIN, 
+    INVENTORY2;
 }

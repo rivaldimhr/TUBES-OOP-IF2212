@@ -11,7 +11,7 @@ public class Menu implements ScreenMethod {
     private Game game;
 	
 
-	private MyButton bPlaying, bPlantsList, bZombiesList, bQuit, bHelp, bGameOver;
+	private MyButton bPlaying, bPlantsList, bZombiesList, bQuit, bHelp, bGameOver, bWin;
 
 	public Menu(Game game) {
 		this.game = game;
@@ -31,21 +31,28 @@ public class Menu implements ScreenMethod {
 		bQuit = new MyButton("Quit", 363, 360, w, h);
         bHelp = new MyButton("Help", 175, 360, w, h);
 		bGameOver = new MyButton("GO", 0, 0, w, h);
+		bWin = new MyButton("Win", 0, 500, w, h);
 
 	}
 
 	@Override
 	public void render(Graphics g) {
        
-        drawBackground(g);
         drawButtons(g);
+        drawBackground(g);
 		
 
 	}
 
 	private void drawBackground(Graphics g) {
-        BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("MENU.png");
+        BufferedImage img = getImage("MENU");
+
+        g.drawImage(img, 0, 0, null);
+    }
+
+	private BufferedImage getImage(String index) {
+		BufferedImage img = null;
+		InputStream is = getClass().getResourceAsStream("/IMAGE/" + index + ".png");
 
 		try {
 			img = ImageIO.read(is);
@@ -53,9 +60,8 @@ public class Menu implements ScreenMethod {
 			System.out.println(e.getMessage());
 		}
 
-        g.drawImage(img, 0, 0, null);
-
-    }
+		return img;
+	}
 
     private void drawButtons(Graphics g) {
 		bPlaying.draw(g);
@@ -64,6 +70,7 @@ public class Menu implements ScreenMethod {
 		bQuit.draw(g);
         bHelp.draw(g);
         bGameOver.draw(g);
+		bWin.draw(g);
 
 	}
 
@@ -71,7 +78,7 @@ public class Menu implements ScreenMethod {
 	public void mouseClicked(int x, int y) {
 
 		if (bPlaying.getBounds().contains(x, y)) {
-			game.setStates(States.PLAY);
+			game.setStates(States.INVENTORY2);
         } else if (bPlantsList.getBounds().contains(x, y)) {
 			game.setStates(States.PLANTSLIST);
         } else if (bQuit.getBounds().contains(x, y)) {
@@ -82,6 +89,8 @@ public class Menu implements ScreenMethod {
             game.setStates(States.HELP);
 		} else if (bGameOver.getBounds().contains(x, y)) {
             game.setStates(States.GAMEOVER);
+		} else if (bWin.getBounds().contains(x, y)) {
+            game.setStates(States.WIN);
         }
 	}
 
@@ -93,6 +102,7 @@ public class Menu implements ScreenMethod {
 		bQuit.setMouseOver(false);
 		bHelp.setMouseOver(false);
 		bGameOver.setMouseOver(false);
+		bWin.setMouseOver(false);
 
 		if (bPlaying.getBounds().contains(x, y)) {
 			bPlaying.setMouseOver(true);
@@ -106,6 +116,8 @@ public class Menu implements ScreenMethod {
 			bHelp.setMouseOver(true);
 		} else if (bGameOver.getBounds().contains(x, y)) {
 			bGameOver.setMouseOver(true);
+		} else if (bWin.getBounds().contains(x, y)) {
+			bWin.setMouseOver(true);
 		}
 
 	}
@@ -125,6 +137,8 @@ public class Menu implements ScreenMethod {
 			bHelp.setMousePressed(true);
 		} else if (bGameOver.getBounds().contains(x, y)) {
 			bGameOver.setMousePressed(true);
+		} else if (bWin.getBounds().contains(x, y)) {
+			bWin.setMousePressed(true);
 		}
 	}
 
@@ -140,6 +154,7 @@ public class Menu implements ScreenMethod {
 		bQuit.resetBooleans();
         bHelp.resetBooleans();
 		bGameOver.resetBooleans();
+		bWin.resetBooleans();
 	}
 
 }

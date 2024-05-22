@@ -10,7 +10,7 @@ public class Play implements ScreenMethod {
 
     private Game game;
 
-	private MyButton  b1;
+	private MyButton  b1, b2;
 
 	public Play(Game game) {
 		this.game = game;
@@ -21,23 +21,30 @@ public class Play implements ScreenMethod {
 	private void initButtons() {
 
 		int w = 75;
-		int h = 22;
-		int x = 555;
-		int y = 15;
+		int h = 27;
+		int x = 570;
+		int y = 9;
 
-		b1 = new MyButton("Quit", x, y, w, h);
+		b1 = new MyButton("Start", x, y, w, h);
+		b2 = new MyButton("Clear", x, 45, w, h);
 	}
 
 	@Override
 	public void render(Graphics g) {
-		drawButtons(g);
 		drawBackground(g);
+		drawButtons(g);
 
 	}
 
 	private void drawBackground(Graphics g) {
-        BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("DECK-INVENTORY.png");
+        BufferedImage img = getImage("INVENTORY");
+
+        g.drawImage(img, 0, 0, null);
+    }
+
+	private BufferedImage getImage(String index) {
+		BufferedImage img = null;
+		InputStream is = getClass().getResourceAsStream("/IMAGE/" + index + ".png");
 
 		try {
 			img = ImageIO.read(is);
@@ -45,21 +52,22 @@ public class Play implements ScreenMethod {
 			System.out.println(e.getMessage());
 		}
 
-        g.drawImage(img, 0, 0, null);
-
-    }
+		return img;
+	}
 
     private void drawButtons(Graphics g) {
 
 		b1.draw(g);
-
+		b2.draw(g);
 	}
 
 	@Override
 	public void mouseClicked(int x, int y) {
         if (b1.getBounds().contains(x, y)) {
 			game.setStates(States.MENU);
-        }
+        } else if (b2.getBounds().contains(x, y)) {
+			game.setStates(States.MENU);
+		}
     }
 
 
@@ -69,6 +77,8 @@ public class Play implements ScreenMethod {
 
 		if (b1.getBounds().contains(x, y)) {
 			b1.setMouseOver(true);
+		} else if (b2.getBounds().contains(x, y)) {
+			b2.setMouseOver(true);
 		}
 	}
 
@@ -77,6 +87,8 @@ public class Play implements ScreenMethod {
 
 		if (b1.getBounds().contains(x, y)) {
 			b1.setMousePressed(true);
+		} else if (b2.getBounds().contains(x, y)) {
+			b2.setMousePressed(true);
 		}
 	}
 
@@ -87,6 +99,7 @@ public class Play implements ScreenMethod {
 
 	private void resetButtons() {
 		b1.resetBooleans();
+		b2.resetBooleans();
 	}
 
 }

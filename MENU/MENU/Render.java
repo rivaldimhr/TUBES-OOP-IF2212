@@ -23,6 +23,10 @@ public class Render {
             game.getPlay().render(g);
         else if (game.getStates() == States.GAMEOVER)
             game.getGameOver().render(g);
+        else if (game.getStates() == States.WIN)
+            game.getWin().render(g);
+        else if (game.getStates() == States.INVENTORY2)
+            game.getInventory2().render(g);
 
 	}
 

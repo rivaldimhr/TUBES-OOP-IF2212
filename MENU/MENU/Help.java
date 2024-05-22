@@ -36,8 +36,14 @@ public class Help implements ScreenMethod {
 	}
 
 	private void drawBackground(Graphics g) {
-        BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream("HELP.png");
+		BufferedImage img = getImage("HELP");
+	
+		g.drawImage(img, 0, 0, null);
+	}
+
+	private BufferedImage getImage(String index) {
+		BufferedImage img = null;
+		InputStream is = getClass().getResourceAsStream("/IMAGE/" + index + ".png");
 
 		try {
 			img = ImageIO.read(is);
@@ -45,9 +51,8 @@ public class Help implements ScreenMethod {
 			System.out.println(e.getMessage());
 		}
 
-        g.drawImage(img, 0, 0, null);
-
-    }
+		return img;
+	}
 
     private void drawButtons(Graphics g) {
 

@@ -17,6 +17,8 @@ public class Game extends JFrame implements Runnable {
 	private Help help;
 	private Play play;
 	private GameOver gameOver;
+	private Win win;
+	private Inventory2 inventory2;
 
 	public Game() {
 
@@ -41,6 +43,8 @@ public class Game extends JFrame implements Runnable {
 		help = new Help(this);
 		play = new Play(this);
 		gameOver = new GameOver(this);
+		win = new Win(this);
+		inventory2 = new Inventory2(this);
 
 	}
 
@@ -132,8 +136,14 @@ public class Game extends JFrame implements Runnable {
 	public GameOver getGameOver() {
 		return gameOver;
 	}
+	public Win getWin() {
+		return win;
+	}
 	public States getStates() {
 		return states;
+	}
+	public Inventory2 getInventory2() {
+		return inventory2;
 	}
 
 	public void setStates(States states) {

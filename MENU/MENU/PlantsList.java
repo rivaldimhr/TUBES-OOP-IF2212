@@ -23,16 +23,16 @@ public class PlantsList implements ScreenMethod {
 	}
 
 	private void initPlantDesc() {
-		plantDesc[0] = getImage("PEASHOOTER");
-		plantDesc[1] =  getImage("SUNFLOWER");
-		plantDesc[2] =  getImage("WALL-NUT");
-		plantDesc[3] =  getImage("SNOW PEA");
-		plantDesc[4] =  getImage("SQUASH");
-		plantDesc[5] =  getImage("LILY PAD");
-		plantDesc[6] =  getImage("TALL-NUT");
-		plantDesc[7] =  getImage("PUFF-SHROOM");
-		plantDesc[8] =  getImage("TANGLE KELP");
-		plantDesc[9] =  getImage("REPEATER");
+		plantDesc[0] = getImage("PEASHOOTER DECK");
+		plantDesc[1] =  getImage("SUNFLOWER DECK");
+		plantDesc[2] =  getImage("WALL-NUT DECK");
+		plantDesc[3] =  getImage("SNOW PEA DECK");
+		plantDesc[4] =  getImage("SQUASH DECK");
+		plantDesc[5] =  getImage("LILY PAD DECK");
+		plantDesc[6] =  getImage("TALL-NUT DECK");
+		plantDesc[7] =  getImage("PUFF-SHROOM DECK");
+		plantDesc[8] =  getImage("TANGLE KELP DECK");
+		plantDesc[9] =  getImage("REPEATER DECK");
 
 	}
 
@@ -79,7 +79,7 @@ public class PlantsList implements ScreenMethod {
 
 	private BufferedImage getImage(String index) {
 		BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream(index + ".png");
+		InputStream is = getClass().getResourceAsStream("IMAGE/" + index + ".png");
 
 		try {
 			img = ImageIO.read(is);

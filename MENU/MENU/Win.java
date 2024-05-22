@@ -6,13 +6,12 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 
-public class GameOver implements ScreenMethod {
-
+public class Win implements ScreenMethod {
     private Game game;
 
 	private MyButton  b1, b2;
 
-	public GameOver(Game game) {
+	public Win(Game game) {
 		this.game = game;
 
 		initButtons();

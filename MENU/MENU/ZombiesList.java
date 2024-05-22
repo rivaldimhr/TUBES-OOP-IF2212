@@ -78,7 +78,7 @@ public class ZombiesList implements ScreenMethod {
 
 	private BufferedImage getImage(String index) {
 		BufferedImage img = null;
-		InputStream is = getClass().getResourceAsStream(index + ".png");
+		InputStream is = getClass().getResourceAsStream("/IMAGE/" + index + ".png");
 
 		try {
 			img = ImageIO.read(is);

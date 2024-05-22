@@ -37,6 +37,10 @@ public class MyMouseListener implements MouseListener, MouseMotionListener {
                 game.getPlay().mouseClicked(e.getX(), e.getY());
             else if (game.getStates() == States.GAMEOVER)
                 game.getGameOver().mouseClicked(e.getX(), e.getY());
+            else if (game.getStates() == States.WIN)
+                game.getWin().mouseClicked(e.getX(), e.getY());
+            else if (game.getStates() == States.INVENTORY2)
+                game.getInventory2().mouseClicked(e.getX(), e.getY());
  
 		}
 	}
